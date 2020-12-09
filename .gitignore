@@ -1,0 +1,17 @@
+.DS_Store
+.idea/
+*.iml
+.env
+*.pyc
+*.pyo
+*.egg-info/
+/venv/
+/target/
+/spark-warehouse/
+/metastore_db/
+.cache/
+.pytest_cache/
+.coverage
+.tox/
+/docs/_build/
+pip_backup.conf

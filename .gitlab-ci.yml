@@ -1,0 +1,27 @@
+image: azfr.docker.gda.allianz/cicd-python-base:miniconda3
+
+variables:
+  XDG_CACHE_HOME: ${CI_PROJECT_DIR}/.cache
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - venv/
+    - .cache/
+
+stages:
+  - build-deploy
+
+deploy:
+  stage: build-deploy
+  script:
+    - make update coverage
+    - make deploy RAW_REPO_URL=$AZFR_RAW_INTERNAL_REPO \
+                  RAW_REPO_USER=$AZFR_CI_USERNAME \
+                  RAW_REPO_PASS=$AZFR_CI_PASSWORD \
+                  RAW_REPO_CERT=$AZFR_NEXUS_CERT
+    - make deploy-docs DOC_REPO_ROOT=$AZFR_RAW_DOC_ROOT \
+                       DOC_REPO_USER=$AZFR_CI_USERNAME \
+                       DOC_REPO_PASS=$AZFR_CI_PASSWORD \
+                       DOC_REPO_CERT=$AZFR_PYPI_CERT
+  coverage: '/TOTAL.*\s+(\d+%)$/'
