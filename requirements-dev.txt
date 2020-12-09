@@ -1,0 +1,26 @@
+## Import runtime dependencies
+#-r requirements.txt
+
+## AZFR Common libraries
+#azfr-release-utils
+#azfr-test-utils
+
+## Luigi
+luigi
+
+
+## For tests, document generations
+pytest
+pytest-html
+coverage
+sphinx<2
+m2r
+sphinx_rtd_theme
+
+# For dev
+unicode
+pandas
+pydantic
+networkx
+matplotlib
+simplejson

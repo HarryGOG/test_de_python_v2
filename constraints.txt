@@ -1,0 +1,13 @@
+setuptools==44.0.0
+
+luigi==2.8.3
+pyspark==2.4.4
+
+mock<4.0.0
+zipp<2.0.0
+pytest<5
+pytest-html<2
+sphinx<2
+sphinxcontrib_websupport<1.2.0
+Pygments<2.6.0
+configparser<5
