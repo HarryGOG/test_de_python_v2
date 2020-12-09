@@ -14,13 +14,13 @@ venv:  ## Create virtualenv
 	cp -f pip.conf venv/pip.ini
 	. $(VENV_ACTIVATE_FILE); python -m pip install -U -q -c constraints.txt pip pypandoc
 	. $(VENV_ACTIVATE_FILE); pip install -U -q -c constraints.txt -e . -r requirements-dev.txt
-	. $(VENV_ACTIVATE_FILE); azfr-spark-install-all
+
 
 update: venv  ## Update dependencies
 	cp -f pip.conf venv/pip.conf
 	cp -f pip.conf venv/pip.ini
 	. $(VENV_ACTIVATE_FILE); pip install -U -q -e . -r requirements-dev.txt -c constraints.txt
-	. $(VENV_ACTIVATE_FILE); azfr-spark-install-all
+
 
 $(IPYTHON_VENV_KERNELS): venv
 	. $(VENV_ACTIVATE_FILE); ipython kernel install --prefix venv --name venv
